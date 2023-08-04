@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="">
+{% block content %}
+<head>
+  <style>
+.one_third {
+   margin-top: 50px;
+    margin-left: 150px;
+}
+
+#topbar #searchform {
+    color: #FBAB45;
+    padding-right: 100px;
+}
+body{
+ background-color: white;
+}
+  </style>
+</head>
+<!-- Top Background Image Wrapper -->
+<body>
+
+<div class="wrapper row3">
+  <main class="hoc container clear">
+
+    <!-- main body -->
+    <section id="introblocks">
+      <ul class="nospace group btmspace-80">
+        {% for i in pr %}
+        <li class="one_third">
+          <figure><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="" style="width:320px;height:300px;"></a>
+            <figcaption>
+              <h6 class="heading">{{i.name}}</h6>
+              <p>{{i.desc| truncatewords:17}}</p>
+              <p><b>Price: {{i.price}}</b></p>
+              <p><b>Stock left: {{i.stock}}</b></p><br>
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+
+       </ul>
+    </section>
+  </main>
+</div>
+
+
+</body>
+{% endblock %}
+</html>

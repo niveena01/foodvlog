@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="" xmlns="http://www.w3.org/1999/html">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hom/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+ <style>
+<!--.wrapper{-->
+<!--  height:100%;-->
+<!--  width:100%;-->
+<!--}-->
+.row1 {
+    background-color: #0f0f0f;
+    color: white;
+}
+#header #logo h1 a {
+    color: white;
+}
+
+
+ </style>
+</head>
+<body id="top">
+  <div class="wrapper row0">
+
+  </div>
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <h1><a href="http://127.0.0.1:8000/">Avodha Shopping</a></h1>
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li class="active"><a href="http://127.0.0.1:8000/">Home</a></li>
+          <li><a class="active" href="{% url 'cartdetails' %}"><i class="fa fa-shopping-cart"></i> {{cn}}</a></li>
+          <li><a class="active" href="">Logout</a></li>
+          <li><a class="active" href="{% url 'login' %}">Login</a></li>
+          <li><a class="active" href="{% url 'register' %}">Register</a></li>
+        </ul>
+       </nav>
+
+
+    </header>
+  </div>
+{% block content %}
+{% endblock %}
+</body>
+</html>

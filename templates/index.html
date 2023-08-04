@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="">
+{% block content %}
+<head>
+    <title>Avodha shopping</title>
+  <style>
+  .bcd{
+     height:100%;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     color:#FBAB45;
+   }
+.dropbtn {
+background-color: #FBAB45;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding-left: 56px;
+  padding-right: 56px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-bottom: 20px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+background-color: #f1f1f1
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropbtn {
+  background-color: #f9981d;
+}
+#topbar #searchform {
+    color: #FBAB45;
+    padding-right: 100px;
+}
+body{
+ background-color: white;
+}
+.centered {
+     text-align: center;
+   }
+  </style>
+</head>
+<!-- Top Background Image Wrapper -->
+<body>
+<div class="bcd" style="background-image:url({% static 'hom/images/demo/backgrounds/bg1.jpg' %});">
+
+
+    <div id="topbar" class="fl_right">
+      <ul class="nospace">
+          <li id="searchform">
+            <div>
+              <form action="{% url 'search' %}" method="get">
+                <fieldset>
+                  <legend>Quick Search:</legend>
+                  <input type="text" placeholder="Enter item name to search" name="q">
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </fieldset>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    <div class="dropdown">
+            <button class="dropbtn">Filter</button>
+            <div class="dropdown-content">
+            <a href="http://127.0.0.1:8000/">All products</a>
+            {% for i in ct %}
+            <a href="{{i.get_url}}">{{i.name}}</a>
+             {% endfor %}
+          </div>
+    </div>
+    <div id="pageintro" class="hoc clear">
+    <article>
+      <h3 class="heading">Quality food items</h3>
+      <p>Register with us and have quality food items at your door step.</p>
+    </article>
+  </div>
+</div>
+
+
+<div class="wrapper row3">
+  <main class="hoc container clear">
+
+    <!-- main body -->
+    <section id="introblocks">
+      <ul class="nospace group btmspace-80">
+
+        {% for i in pg.object_list %}
+        <li class="one_third">
+          <figure><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="" style="width:320px;height:300px;"></a>
+            <figcaption>
+              <h6 class="heading">{{i.name}}</h6>
+              <p>{{i.desc | truncatewords:12}}</p>
+<!--              <p><b>Price: {{i.price}}</b></p>-->
+<!--              <p><b>Stock left: {{i.stock}}</b></p><br>-->
+
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+       </ul>
+    </section>
+     <div class="centered">
+        {% for p in pg.paginator.page_rage %}
+        <a href="?page={{p}}" class="btn btn-light btn-sm {% if pg.number == p %} active {% endif %}">{{p}}</a>
+        {% endfor %}
+    </div>
+    <div class="centered">
+   {% for p in pg.paginator.page_range %}
+    <a href="?page={{p}}" class="btn btn-light btn-sm {% if pg.number == p %} active {% endif %}">{{p}}</a>
+    {% endfor %}
+   </div>
+    <div class="clear"></div>
+  </main>
+
+</div>
+
+
+<!-- JAVASCRIPTS -->
+<script src="{% static 'hom/layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'hom/layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'hom/layout/scripts/jquery.mobilemenu.js' %}"></script>
+
+</body>
+{% endblock %}
+</html>

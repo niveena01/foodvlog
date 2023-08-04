@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+    <title>Shopping cart</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <style>
+.col-25 {
+  -ms-flex: 25%;
+  flex: 25%;
+  padding: 0 16px;
+
+}
+span.price {
+  float: right;
+  color: #666770;
+  margin-right: 40px;
+}
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  color: #666770;
+}
+
+@media (max-width: 800px) {
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+a {
+    color: #f78204;
+}
+h4 {
+    color: black;
+    padding-top:20px;
+    padding-left:15px;
+}
+p{
+  padding-left:20px;
+}
+
+     </style>
+     </head>
+    <body>
+    <div class="col-25">
+    <div class="container">
+
+      <h4>Cart
+        <span class="price" style="color:black">
+          <i class="fa fa-shopping-cart"></i>
+          <b>{{cn}}</b>
+        </span>
+      </h4>
+      {% for i in ct %}
+      <a href="{% url 'remove' i.prodt.id %}"><i class="fa fa-trash-o" style="font-size:20px"></i>&nbsp;</a>
+      <a href="{{i.prodt.get_url}}"><img src="{{i.prodt.img.url}}" alt="{{i.prodt.name}}" style="width:100px;height:100px;"></a>
+      <p><a href="{{i.prodt.get_url}}" >{{i.prodt.name}}</a>
+      <span class="price">${{i.total}}<br>
+      <a href="{% url 'addcart' i.prodt.id %}" > <i class="fa fa-plus" style="font-size:10px"></i></a>&nbsp;{{i.quant}}&nbsp;<a href="{% url 'cart_decrement' i.prodt.id %}"> <i class="fa fa-minus" style="font-size:10px"></i> </a>
+    </span>
+      </p>
+      <p>$ {{i.prodt.price}} x 1</p>
+      <p>Qty: {{i.quant}}</p>
+      <hr>
+      {% endfor %}
+      <div>
+          <p>Total <span class="price" style="color:black"><b>Total: ${{t}}</b></span></p>
+      </div>
+    </div>
+  </div>
+    </body>
+</html>
+{% endblock %}
