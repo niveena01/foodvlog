@@ -22,12 +22,11 @@ def registeration(request):
                 messages.info(request, "email taken")
                 return redirect('register')
             else:
-                user = User.objects.create_user(first_name=firstname, last_name=lastname, username=username, email=email,
-                                                password=password1)
+                user = User.objects.create_user(first_name=firstname, last_name=lastname, username=username, email=email, password=password1)
                 user.save
                 print("created")
         else:
-            # messages.info(request, "password not matched")
+            messages.info(request, "password not matched")
             print("password not matched")
         return redirect('/')
     else:
@@ -47,6 +46,7 @@ def login(request):
         else:
             messages.info(request, 'invalid details')
             return redirect('login')
+
     else:
         return render(request, 'login.html')
 
