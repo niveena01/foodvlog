@@ -62,23 +62,28 @@ label {
   <h1>Registeration</h1>
   <hr>  
   <label> Firstname </label>   
-<input type="text" name="firstname" placeholder= "Firstname" size="15" required />      
+<input type="text" name="first_name" placeholder= "Firstname" size="15" required />
 <label> Lastname: </label>    
-<input type="text" name="lastname" placeholder="Lastname" size="15" required />
+<input type="text" name="last_name" placeholder="Lastname" size="15" required />
 <label> Username: </label>    
 <input type="text" name="username" placeholder="Username" size="15" required />
 
- <label for="email"><b>Email</b></label>  
- <input type="text" placeholder="Enter Email" name="email" id="email" required>
+ <label for="emails"><b>Email</b></label>
+ <input type="text" placeholder="Enter Email" name="email" id="emails" required>
   
-    <label for="password1"><b>Password</b></label>  
-    <input type="password" placeholder="Enter Password" name="password1" id="password1" required>
+    <label for="password01"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password1" id="password01" required>
   
-    <label for="password2"><b>Re-type Password</b></label>
-    <input type="password" placeholder="Retype Password" id="password2" required>
+    <label for="password02"><b>Re-type Password</b></label>
+    <input type="password" placeholder="Retype Password" name="password2" id="password02" required>
     <button type="submit" class="registerbtn">Register</button>
   </div>
-</form>  
+</form>
+<div>
+    {% for message in messages %}
+     <h4>{{message}}</h4>
+    {% endfor %}
+</div>
 </body>  
 </html>
 {% endblock %}
