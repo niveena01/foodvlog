@@ -6,7 +6,10 @@ from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 
-def cart_details(request, tot=0, count=0, ct_items=None):
+def cart_details(request):
+    tot = 0
+    count = 0
+    ct_items = None
     try:
         ct = cartlist.objects.get(cart_id=c_id(request))
         ct_items = items.objects.filter(cart=ct, active=True)
@@ -33,14 +36,16 @@ def add_cart(request, product_id):
     except cartlist.DoesNotExist:
         ct = cartlist.objects.create(cart_id=c_id(request))
         ct.save()
+
     try:
         c_items = items.objects.get(prodt=prod, cart=ct)
         if c_items.quant < c_items.prodt.stock:
             c_items.quant += 1
-        c_items.save()
+            c_items.save()
     except items.DoesNotExist:
         c_items = items.objects.create(prodt=prod, quant=1, cart=ct)
         c_items.save()
+
     return redirect('cartdetails')
 
 

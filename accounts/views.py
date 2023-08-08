@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
-
 def registeration(request):
     if request.method == "POST":
         firstname = request.POST["first_name"]
@@ -52,5 +52,7 @@ def login(request):
 
 
 def logout(request):
+
     auth.logout(request)
+
     return redirect('/')
