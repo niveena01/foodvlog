@@ -6,88 +6,90 @@
 <head>
     <title>Avodha shopping</title>
   <style>
-  .bcd{
-     height:100%;
-     background-position: center;
-     background-repeat: no-repeat;
-     background-size: cover;
-     color:#FBAB45;
-   }
-.dropbtn {
-background-color: #FBAB45;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-  padding-left: 56px;
-  padding-right: 56px;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  padding-bottom: 20px;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown-content a:hover {
-background-color: #f1f1f1
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.dropdown:hover .dropbtn {
-  background-color: #f9981d;
-}
-#topbar #searchform {
-    color: #FBAB45;
-    padding-right: 100px;
-}
-body{
- background-color: white;
-}
-.centered {
-     text-align: center;
-   }
-.one_third {
-    width: 30%;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 70px;
-    margin: 0 0 0 0%;
-    float: none;
-
-<!--    margin: 0 0 0 4.21052%;-->
-}
-@media only screen and (max-device-width: 700px) {
- .one_third {
-    width: 100%;
-}
-@media screen and (max-width: 750px){
-        #topbar #searchform {
-            display: block;
-            padding-right: 30px;
-            padding-top: 45px;
-            float: right;
+      .bcd{
+         height:100%;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         color:#FBAB45;
+       }
+        .dropbtn {
+        background-color: #FBAB45;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
         }
-}
-#introblocks {
-    margin: 0 0 0 0%;
-}
+        .dropdown {
+          position: relative;
+          display: inline-block;
+          padding-left: 56px;
+          padding-right: 56px;
+          padding-top: 10px;
+          padding-bottom: 20px;
+          padding-bottom: 20px;
+        }
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        .dropdown-content a:hover {
+        background-color: #f1f1f1
+        }
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        .dropdown:hover .dropbtn {
+          background-color: #f9981d;
+        }
+        #topbar #searchform {
+            color: #FBAB45;
+            padding-right: 100px;
+        }
+        body{
+         background-color: white;
+        }
+        .centered {
+             text-align: center;
+           }
+        .one_third {
+            width: 30%;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 70px;
+            margin: 0 0 0 0%;
+            float: none;
+            margin-left: 0px;
+
+        <!--    margin: 0 0 0 4.21052%;-->
+        }
+        @media only screen and (max-device-width: 700px) {
+         .one_third {
+            width: 100%;
+            margin-left: 0px;
+        }
+        @media screen and (max-width: 750px){
+                #topbar #searchform {
+                    display: block;
+                    padding: 0px;
+                    margin-left: 250px;
+                }
+        }
+
+        #introblocks {
+            margin: 0 0 0 0%;
+        }
   </style>
 </head>
 <!-- Top Background Image Wrapper -->
@@ -113,7 +115,7 @@ body{
     <div class="dropdown">
             <button class="dropbtn">Filter</button>
             <div class="dropdown-content">
-            <a href="http://127.0.0.1:8000/">All products</a>
+            <a href="{% url 'home' %}">All products</a>
             {% for i in ct %}
             <a href="{{i.get_url}}">{{i.name}}</a>
              {% endfor %}
