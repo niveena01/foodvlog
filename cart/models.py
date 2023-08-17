@@ -1,8 +1,9 @@
 from django.db import models
-from shop . models import *
+from shop.models import *
 
 
 # Create your models here.
+
 class cartlist(models.Model):
     cart_id = models.CharField(max_length=250, unique=True)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -21,4 +22,4 @@ class items(models.Model):
         return self.prodt
 
     def total(self):
-        return self.prodt.price*self.quant
+        return self.prodt.price * self.quant

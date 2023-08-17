@@ -77,7 +77,14 @@ body{
  .one_third {
     width: 100%;
 }
-
+@media screen and (max-width: 750px){
+        #topbar #searchform {
+            display: block;
+            padding-right: 30px;
+            padding-top: 45px;
+            float: right;
+        }
+}
 #introblocks {
     margin: 0 0 0 0%;
 }
@@ -88,7 +95,7 @@ body{
 <div class="bcd" style="background-image:url({% static 'hom/images/demo/backgrounds/bg0.jpg' %});">
 
     <div id="topbar" class="fl_right">
-      <ul class="nospace">
+      <ul class="nospace fa-lg">
           <li id="searchform">
             <div>
               <form action="{% url 'search' %}" method="get">

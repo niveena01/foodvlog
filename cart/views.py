@@ -1,6 +1,6 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
-from shop.models import *
 from django.core.exceptions import ObjectDoesNotExist
 
 
@@ -18,7 +18,6 @@ def cart_details(request):
             count += i.quant
     except ObjectDoesNotExist:
         pass
-
     return render(request, 'cart.html', {'ct': ct_items, 't': tot, 'cn': count})
 
 
