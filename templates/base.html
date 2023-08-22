@@ -51,9 +51,6 @@
 
           <li><a class="active" href="{% url 'register' %}">Register</a></li>
 
-<!--          {% if request.user.is_authenticated %}-->
-<!--           <li><a class="active" href="{% url 'notification' %}">Notification</a></li>-->
-<!--          {% endif %}-->
 
           {% if request.user.is_authenticated %}
            <li><h5 style="color: #FBAB45;">Hi, {{ request.user.username }} !</h5></li>
