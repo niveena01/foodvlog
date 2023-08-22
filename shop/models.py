@@ -5,6 +5,7 @@ from django.urls import reverse
 
 # Create your models here.
 class catego(models.Model):
+    objects = None
     name = models.CharField(max_length=250, unique=True)
     slug = models.SlugField(max_length=250, unique=True, blank=True)
 
@@ -26,6 +27,7 @@ class catego(models.Model):
 
 
 class products(models.Model):
+    objects = None
     name = models.CharField(max_length=123, unique=True)
     slug = models.CharField(max_length=123, unique=True)
     img = models.ImageField(upload_to='product')
@@ -40,3 +42,7 @@ class products(models.Model):
 
     def __str__(self):
         return '{}'.format(self.name)
+
+
+class Item:
+    pass

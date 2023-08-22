@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
     <title>Shopping cart</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,6 +39,15 @@
             border-color: #FBAB45;
             margin-top: 30px;
         }
+        .checkoutbtn{
+
+            color: #FFFFFF;
+            background-color: #fa8d0a;
+            border-color: #fa8d0a;
+            margin-left:1149px;
+            padding: 10px 20px 10px 20px;
+
+        }
 
         @media (max-width: 800px) {
           .col-25 {
@@ -47,6 +56,13 @@
           a{
                 color: #f78204;
           }
+          .checkoutbtn{
+            color: #FFFFFF;
+            background-color: #fa8d0a;
+            border-color: #fa8d0a;
+            padding: 10px 20px 10px 20px;  <!--padding: top right bottom left-->
+            margin-left: 30px;
+         }
         }
 
 
@@ -83,7 +99,9 @@
       {% endfor %}
       <div>
           <p>Total <span class="price" style="color:black"><b>Total: ${{t}}</b></span></p>
-
+          {% if ct %}
+          <a class="active checkoutbtn" href="{% url 'checkout' %}">Checkout</a>
+          {% endif %}
       </div>
     </div>
   </div>

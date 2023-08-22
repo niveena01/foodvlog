@@ -17,6 +17,10 @@
 }
 #header #logo h1 a {
     color: white;
+    text-decoration: none; /* Removes the underline */
+}
+#mainav .active a, #mainav a:hover, #mainav li:hover > a {
+    text-decoration: none;
 }
 
 
@@ -47,8 +51,12 @@
 
           <li><a class="active" href="{% url 'register' %}">Register</a></li>
 
+<!--          {% if request.user.is_authenticated %}-->
+<!--           <li><a class="active" href="{% url 'notification' %}">Notification</a></li>-->
+<!--          {% endif %}-->
+
           {% if request.user.is_authenticated %}
-           <li><h1 style="color: #FBAB45;">Hi, {{ request.user.username }} !</h1></li>
+           <li><h5 style="color: #FBAB45;">Hi, {{ request.user.username }} !</h5></li>
           {% endif %}
 
         </ul>

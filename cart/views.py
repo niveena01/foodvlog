@@ -1,10 +1,11 @@
-from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import *
+from .models import cartlist, items, products
 from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
+
+
 
 def cart_details(request):
     tot = 0
